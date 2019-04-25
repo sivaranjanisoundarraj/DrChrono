@@ -1,0 +1,9 @@
+version: '3'
+
+services:
+  shell:
+    build:
+      context: ./
+      dockerfile: Dockerfile.dev
+    volumes:
+      - .:/src
