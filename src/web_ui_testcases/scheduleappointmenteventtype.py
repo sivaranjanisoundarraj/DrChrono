@@ -4,37 +4,37 @@ from web_ui_testcases.environmentSetup import TestBase
 from main.pages import *
 from main.locators import *
 import HtmlTestRunner
+
 """
   Verify user is able to schedule appointment by Event
 """
 
 
 class ScheduleAppointmentEventType(object):
-
     def testScheduleappointmentType(self):
 
-        'Creating an object for LoginPage'
+        "Creating an object for LoginPage"
         objLoginPage = LoginPage(self.driver)
 
-        'Login To Dr.Chrono Application'
+        "Login To Dr.Chrono Application"
         objLoginPage.login()
 
-        'Creating an object for ScheduleAppointmentEvent'
+        "Creating an object for ScheduleAppointmentEvent"
         objScheduleAppointment = ScheduleAppointmentEvent(self.driver)
 
-        'Navigate To Appointment Schedule Screen'
+        "Navigate To Appointment Schedule Screen"
         objScheduleAppointment.clickEventbutton()
 
-        'Select a Patient'
+        "Select a Patient"
         objScheduleAppointment.selectPatientName()
 
-        'Enter Additional Appointment Details'
+        "Enter Additional Appointment Details"
         objScheduleAppointment.enterAdditionalAppointmentDetails()
 
-        'Click Save'
-        objScheduleAppointment.clickSaveButton('')
+        "Click Save"
+        objScheduleAppointment.clickSaveButton("")
 
-        'Verified the Appointment'
+        "Verified the Appointment"
         objScheduleAppointment.verifyAppointmentEvent()
 
 
@@ -55,34 +55,33 @@ Verify user is able to schedule appointment using Event with Break type
 
 
 class ScheduleAppointmentBreak(object):
-
     def testScheduleappointmentBreak(self):
 
-        'Creating an object for LoginPage'
+        "Creating an object for LoginPage"
         objLoginPage = LoginPage(self.driver)
 
-        'Login To Dr.Chrono Application'
+        "Login To Dr.Chrono Application"
         objLoginPage.login()
 
-        'Creating an object for ScheduleAppointmentEvent'
+        "Creating an object for ScheduleAppointmentEvent"
         objScheduleAppointment = ScheduleAppointmentEvent(self.driver)
 
-        'Navigate To Appointment Schedule Screen'
+        "Navigate To Appointment Schedule Screen"
         objScheduleAppointment.clickEventbutton()
 
-        'Click Event Type'
-        objScheduleAppointment.clickEventType('Break')
+        "Click Event Type"
+        objScheduleAppointment.clickEventType("Break")
 
-        'Select a Patient'
+        "Select a Patient"
         objScheduleAppointment.selectPatientName()
 
-        'Enter Additional Appointment Details'
+        "Enter Additional Appointment Details"
         objScheduleAppointment.enterAdditionalAppointmentDetails()
 
-        'Click Save'
-        objScheduleAppointment.clickSaveButton('')
+        "Click Save"
+        objScheduleAppointment.clickSaveButton("")
 
-        'Verify Appointment Event'
+        "Verify Appointment Event"
         objScheduleAppointment.verifyAppointmentEvent()
 
 
@@ -90,7 +89,7 @@ class ScheduleAppointmentBreak(object):
  This method is inheritance for TestBase class - Test case
 """
 
-'Test case for schedule appointment with break type '
+"Test case for schedule appointment with break type "
 
 
 class TestScheduleAppointmentBreak(ScheduleAppointmentBreak, TestBase):
@@ -107,38 +106,38 @@ class TestScheduleAppointmentBreak(ScheduleAppointmentBreak, TestBase):
 class ScheduleAppointmentReferral(object):
     def testScheduleappointmentReferral(self):
 
-        'Creating an object for LoginPage'
+        "Creating an object for LoginPage"
         objLoginPage = LoginPage(self.driver)
 
-        'Login To Dr.Chrono Application'
+        "Login To Dr.Chrono Application"
         objLoginPage.login()
 
-        'Creating an object for ScheduleAppointmentEvent'
+        "Creating an object for ScheduleAppointmentEvent"
         objScheduleAppointment = ScheduleAppointmentEvent(self.driver)
 
-        'Navigate To Appointment Schedule Screen'
+        "Navigate To Appointment Schedule Screen"
         objScheduleAppointment.clickEventbutton()
 
-        'Click Event Type'
-        objScheduleAppointment.clickEventType('Referral')
+        "Click Event Type"
+        objScheduleAppointment.clickEventType("Referral")
 
-        'Select a Patient Name'
+        "Select a Patient Name"
         objScheduleAppointment.selectPatientName()
 
-        'Enter Additional Appointment Details'
+        "Enter Additional Appointment Details"
         objScheduleAppointment.enterAdditionalAppointmentDetails()
 
-        'Click Save'
-        objScheduleAppointment.clickSaveButton('')
+        "Click Save"
+        objScheduleAppointment.clickSaveButton("")
 
-        'Verify Appointment Event'
+        "Verify Appointment Event"
         objScheduleAppointment.verifyAppointmentEvent()
 
 
 """
  This method is inheritance for TestBase class
 """
-'Test case - schedule appointment by event with referral type'
+"Test case - schedule appointment by event with referral type"
 
 
 class TestScheduleAppointmentReferral(ScheduleAppointmentReferral, TestBase):
@@ -153,34 +152,33 @@ Verify user can schedule appointment by event with Transition of care type
 
 
 class ScheduleAppointmentTransitionofcare(object):
-
     def testScheduleappointmentTranisitionofcare(self):
 
-        'Creating an object for LoginPage'
+        "Creating an object for LoginPage"
         objLoginPage = LoginPage(self.driver)
 
-        'Login To Dr.Chrono Application'
+        "Login To Dr.Chrono Application"
         objLoginPage.login()
 
-        'Creating an object for ScheduleAppointmentEvent'
+        "Creating an object for ScheduleAppointmentEvent"
         objScheduleAppointment = ScheduleAppointmentEvent(self.driver)
 
-        'Click Event Button'
+        "Click Event Button"
         objScheduleAppointment.clickEventbutton()
 
-        'Click Event Type'
-        objScheduleAppointment.clickEventType('Transition of Care')
+        "Click Event Type"
+        objScheduleAppointment.clickEventType("Transition of Care")
 
-        'Select a Patient Name'
+        "Select a Patient Name"
         objScheduleAppointment.selectPatientName()
 
-        'Enter Additional AppiontmentDetails'
+        "Enter Additional AppiontmentDetails"
         objScheduleAppointment.enterAdditionalAppointmentDetails()
 
-        'Click Save'
-        objScheduleAppointment.clickSaveButton('')
+        "Click Save"
+        objScheduleAppointment.clickSaveButton("")
 
-        'Verify Appointment Event'
+        "Verify Appointment Event"
         objScheduleAppointment.verifyAppointmentEvent()
 
 
@@ -188,7 +186,7 @@ class ScheduleAppointmentTransitionofcare(object):
  This method is inheritance for TestBase class
 """
 
-'Test case - schedule appointment by event with transitionOfCare type'
+"Test case - schedule appointment by event with transitionOfCare type"
 
 
 class TestScheduleAppointmentTransitionofcare(ScheduleAppointmentTransitionofcare, TestBase):
@@ -203,34 +201,33 @@ Verify user is able to schedule appointment by Event with walk-in type
 
 
 class ScheduleappiontmentWalkin(object):
-
     def testScheduleappiontmentWalkin(self):
 
-        'Creating an object for LoginPage'
+        "Creating an object for LoginPage"
         objLoginPage = LoginPage(self.driver)
 
-        'Login To Dr.Chrono Application'
+        "Login To Dr.Chrono Application"
         objLoginPage.login()
 
-        'Creating an object for ScheduleAppointmentEvent'
+        "Creating an object for ScheduleAppointmentEvent"
         objScheduleAppointment = ScheduleAppointmentEvent(self.driver)
 
-        'Navigate To Appointment Schedule Screen'
+        "Navigate To Appointment Schedule Screen"
         objScheduleAppointment.clickEventbutton()
 
-        'Click Event Type'
-        objScheduleAppointment.clickEventType('Walk-in')
+        "Click Event Type"
+        objScheduleAppointment.clickEventType("Walk-in")
 
-        'Select a Patient Name'
+        "Select a Patient Name"
         objScheduleAppointment.selectPatientName()
 
-        'Enter Additional  Appointment Details'
+        "Enter Additional  Appointment Details"
         objScheduleAppointment.enterAdditionalAppointmentDetails()
 
-        'Click SaveButton'
-        objScheduleAppointment.clickSaveButton('')
+        "Click SaveButton"
+        objScheduleAppointment.clickSaveButton("")
 
-        'Verify Appointment tEvent'
+        "Verify Appointment tEvent"
         objScheduleAppointment.verifyAppointmentEvent()
 
 
@@ -238,7 +235,7 @@ class ScheduleappiontmentWalkin(object):
  This method is inheritance for Base class
 """
 
-'Test case - schedule appointment event with Walk-in type'
+"Test case - schedule appointment event with Walk-in type"
 
 
 class TestScheduleappiontmentWalkin(ScheduleappiontmentWalkin, TestBase):
@@ -249,46 +246,47 @@ class TestScheduleappiontmentWalkin(ScheduleappiontmentWalkin, TestBase):
 
 """
  This method is inheritance for Base class
-""" 
-'Testcase - schedule appointment event Patient-in type'
+"""
+"Testcase - schedule appointment event Patient-in type"
 
 
 class ScheduleappiontmentNewPatient(object):
-    ''
+    ""
+
     def testScheduleappiontmentNewPatient(self):
 
-        'Creating an object for LoginPage' 
+        "Creating an object for LoginPage"
         objLoginPage = LoginPage(self.driver)
 
-        'Login To Dr.Chrono Application'
+        "Login To Dr.Chrono Application"
         objLoginPage.login()
 
-        'Creating an object for ScheduleAppointmentEvent'
+        "Creating an object for ScheduleAppointmentEvent"
         objScheduleAppointment = ScheduleAppointmentEvent(self.driver)
 
-        'Click Event Button'
+        "Click Event Button"
         objScheduleAppointment.clickEventbutton()
 
-        'Click Event Type'
-        objScheduleAppointment.clickEventType('New Patient')
+        "Click Event Type"
+        objScheduleAppointment.clickEventType("New Patient")
 
-        'Create a Patient Name'
+        "Create a Patient Name"
         objScheduleAppointment.createNewPatient()
 
-        'Enter Additional  Appointment Details'
+        "Enter Additional  Appointment Details"
         objScheduleAppointment.enterAdditionalAppointmentDetails()
 
-        'Click SaveButton'
-        objScheduleAppointment.clickSaveButton('')
+        "Click SaveButton"
+        objScheduleAppointment.clickSaveButton("")
 
-        'Verify Appointment Event'
+        "Verify Appointment Event"
         objScheduleAppointment.verifyAppointmentEvent()
 
 
 """
  This method is inheritance for Base class
-""" 
-'Testcase - schedule appointment event with Patient type'
+"""
+"Testcase - schedule appointment event with Patient type"
 
 
 class TestScheduleappiontmentNewPatient(ScheduleappiontmentNewPatient, TestBase):

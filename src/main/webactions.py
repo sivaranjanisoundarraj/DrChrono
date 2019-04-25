@@ -49,7 +49,7 @@ class BaseBage(object):
             element.clear()
             element.send_keys(value)
         except WebDriverException:
-            self.fail("Could not enter value to text box" )
+            self.fail("Could not enter value to text box")
 
     def clear(self, *locator):
         """
@@ -133,7 +133,7 @@ class BaseBage(object):
             assert True
         except:
             assert False
- 
+
     def getAttribute(self, *locators):
         """
         This method is used the get the attribute value

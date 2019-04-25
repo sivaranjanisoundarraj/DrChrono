@@ -14,13 +14,13 @@ class AddnewPatientUsingNewPatientButton(object):
 
     def testApintEditPatient(self):
 
-        'Creating an object for LoginPage'
+        "Creating an object for LoginPage"
         objLoginPage = LoginPage(self.driver)
 
-        'Login To Dr.Chrono Application'
+        "Login To Dr.Chrono Application"
         objLoginPage.login()
 
-        'Creating an object for ScheduleAppointmentEvent'
+        "Creating an object for ScheduleAppointmentEvent"
         objcalendarApp = CalendarAppointment(self.driver)
 
         objcalendarApp.clickScheduleMenu()
@@ -29,12 +29,12 @@ class AddnewPatientUsingNewPatientButton(object):
 
         objcalendarApp.clickNewPatientBut()
 
+
 class TestApintEditPatient(AddnewPatientUsingNewPatientButton, TestBase):
     """
     This method is inheritance for Base class
     """
+
     @classmethod
     def setUpClass(cls):
         super(AddnewPatientUsingNewPatientButton, cls).setUpClass()
-
-

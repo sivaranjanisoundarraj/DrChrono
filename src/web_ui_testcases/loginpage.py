@@ -13,12 +13,13 @@ Test case for login page
 
 class ValidateLogin(object):
 
-    'Verify user is able to SignUp'
+    "Verify user is able to SignUp"
+
     def testValidCredentials(self):
-        'Creating an object for LoginPage'
+        "Creating an object for LoginPage"
         objLoginPage = LoginPage(self.driver)
 
-        'Login To Dr.Chrono Application'
+        "Login To Dr.Chrono Application"
         objLoginPage.login()
 
 
@@ -30,4 +31,4 @@ This method is inheritance of  TestBase class- Testcase for Login verification
 class TestLogin(ValidateLogin, TestBase):
     @classmethod
     def setUpClass(cls):
-        super(ValidateLogin, cls).setUpClass()   
+        super(ValidateLogin, cls).setUpClass()

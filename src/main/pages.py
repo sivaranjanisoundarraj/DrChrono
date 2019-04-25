@@ -13,20 +13,21 @@ class LoginPage(BaseBage):
     """
     This class is used for login verification
     """
-    'Defining the source of config file'
+
+    "Defining the source of config file"
     config = ConfigParser()
     project_root = os.path.dirname(os.path.dirname(__file__))
-    config_path = os.path.join(project_root, 'main')
-    config_path1 = os.path.join(config_path, 'config')
+    config_path = os.path.join(project_root, "main")
+    config_path1 = os.path.join(config_path, "config")
     print(config_path1)
     config.read(config_path1)
 
-    'Get values from config file'
+    "Get values from config file"
 
-    url = config.get('data','url')
-    username = config.get('data', 'username')
-    password = config.get('data', 'password')
-    month = '3'
+    url = config.get("data", "url")
+    username = config.get("data", "username")
+    password = config.get("data", "password")
+    month = "3"
 
     def __init__(self, driver):
         """
@@ -71,22 +72,24 @@ class ScheduleAppointmentEvent(LoginPage):
     TIME = None
     PATIENT_NAME = None
     DATE = None
-    var_patientname = 'john'
-    times = '10'
-    firstname = 'Ram'
-    lastname = 'Hentry'
-    reason = 'Testing the appointment'
+    var_patientname = "john"
+    times = "10"
+    firstname = "Ram"
+    lastname = "Hentry"
+    reason = "Testing the appointment"
     element = None
     """
     constructor class
     @param self : this is refer to instance of object
     """
+
     def __init__(self, driver):
         self.driver = driver
 
     """
     Click the Schedule menu
     """
+
     def clickScheduleMenu(self):
         try:
             time.sleep(3)
@@ -99,6 +102,7 @@ class ScheduleAppointmentEvent(LoginPage):
     """
     This method used to Click Event Button
     """
+
     def clickEventbutton(self):
         try:
             self.clickScheduleMenu()
@@ -114,7 +118,7 @@ class ScheduleAppointmentEvent(LoginPage):
         """
         try:
             self.click(*ScheduleAppointmentsEventlocators.BTN_SAVE)
-            if(type == 'ok'):
+            if type == "ok":
                 obj = self.driver.switch_to_alert()
                 obj.accept()
             time.sleep(3)
@@ -142,7 +146,7 @@ class ScheduleAppointmentEvent(LoginPage):
             global PATIENT_NAME
             global TIME
             time.sleep(2)
-            self.click(*ScheduleAppointmentsEventlocators.TXT_PATIENT_NAME) 
+            self.click(*ScheduleAppointmentsEventlocators.TXT_PATIENT_NAME)
             self.type(self.var_patientname, *ScheduleAppointmentsEventlocators.TXT_PATIENT_NAME)
             time.sleep(5)
             self.driver.find_element(*ScheduleAppointmentsEventlocators.TXT_PATIENT_ITEM).click()
@@ -170,15 +174,15 @@ class ScheduleAppointmentEvent(LoginPage):
         This method used to click event type
         """
         try:
-            if(type == 'Break'):
+            if type == "Break":
                 self.click(*ScheduleAppointmentsEventlocators.CHK_BREAK)
-            elif(type == 'Walk-in'):
+            elif type == "Walk-in":
                 self.click(*ScheduleAppointmentsEventlocators.CHK_WALKIN)
-            elif(type == 'Transition of Care'): 
+            elif type == "Transition of Care":
                 self.click(*ScheduleAppointmentsEventlocators.CHK_TRANSITIONOFCARE)
-            elif(type == 'Referral'):
+            elif type == "Referral":
                 self.click(*ScheduleAppointmentsEventlocators.CHK_REFRELL)
-            elif(type == 'New Patient'):
+            elif type == "New Patient":
                 self.click(*ScheduleAppointmentsEventlocators.CHK_NEWPATIENT)
         except WebDriverException:
             self.fail("Could not click the event type")
@@ -236,7 +240,10 @@ class ScheduleAppointmentEvent(LoginPage):
         """
         try:
             self.clickViewReminder()
-            self.selectByVisibleText("Use Patient's Last Reminders",*ScheduleAppointmentsEventlocators.DDL_REMINDERPROFILE)
+            self.selectByVisibleText(
+                "Use Patient's Last Reminders",
+                *ScheduleAppointmentsEventlocators.DDL_REMINDERPROFILE
+            )
             self.click(*ScheduleAppointmentsEventlocators.BTN_ADDNEWREMINDER)
         except WebDriverException:
             self.fail("Could not add reminder profile")
@@ -293,9 +300,9 @@ class ScheduleAppointmentEvent(LoginPage):
             self.click(*ScheduleAppointmentsEventlocators.BTN_EDIT_REMINDER)
             self.click(*ScheduleAppointmentsEventlocators.TXT_CUSTOM_MSG)
             self.type(self.reason, *ScheduleAppointmentsEventlocators.TXT_CUSTOM_MSG)
-            self.selectByVisibleText('SMS Text', *ScheduleAppointmentsEventlocators.DDL_SMSTEXT)
-            self.selectByVisibleText('after', *ScheduleAppointmentsEventlocators.DDL_AFTER)
-            self.selectByVisibleText('day(s)', *ScheduleAppointmentsEventlocators.DDL_WEEKS)
+            self.selectByVisibleText("SMS Text", *ScheduleAppointmentsEventlocators.DDL_SMSTEXT)
+            self.selectByVisibleText("after", *ScheduleAppointmentsEventlocators.DDL_AFTER)
+            self.selectByVisibleText("day(s)", *ScheduleAppointmentsEventlocators.DDL_WEEKS)
             self.click(*ScheduleAppointmentsEventlocators.BTN_PREVIEW)
             self.click(*ScheduleAppointmentsEventlocators.BTN_CLOSE)
         except WebDriverException:
@@ -306,10 +313,15 @@ class ScheduleAppointmentEvent(LoginPage):
         This method is used to Delete the reminder
         """
         try:
-            if(type == 'Chronically'):
-                self.selectByVisibleText('For Chronically Late Patients (Zuci QA)', *ScheduleAppointmentsEventlocators.DDL_CHOOSEREMINDERPROFILE)
+            if type == "Chronically":
+                self.selectByVisibleText(
+                    "For Chronically Late Patients (Zuci QA)",
+                    *ScheduleAppointmentsEventlocators.DDL_CHOOSEREMINDERPROFILE
+                )
                 time.sleep(3)
-            self.driver.find_element_by_xpath("//*[@id='id_rem_row_1']//*[contains(text(),'Delete')]").click()
+            self.driver.find_element_by_xpath(
+                "//*[@id='id_rem_row_1']//*[contains(text(),'Delete')]"
+            ).click()
         except WebDriverException:
             self.fail("Could not delete reminder profile")
 
@@ -327,30 +339,36 @@ class ScheduleAppointmentEvent(LoginPage):
         This method is used to verify Appointment
         """
         try:
-                self.click(*CalnderLocators.BTN_DAILY)
-                for div in range(2, 26):
-                    time.sleep(3)
-                    web_patient_name = self.driver.find_element_by_xpath("//*[@id='tgCol0']/div["+str(div)+"]/dl/dd").text
-                    name = web_patient_name.split(":")[0]
-                    if(PATIENT_NAME == name):
-                        for div in range(2, 20):
-                                web_time = self.driver.find_element_by_xpath("//*[@id='tgCol0']/div["+str(div)+"]/dl/dt").text
-                                start_time = web_time.split("-")[0]
-                                end_time = web_time.split("-")[1]
-                                dur = end_time.split(" ")[2]
-                                duration = dur.lower()
-                                ttt = start_time+duration
-                                DURATION_TIME = ttt.replace(" ", "")
-                                if(TIME == DURATION_TIME):
-                                    time.sleep(4)
-                                    click_time = self.driver.find_element_by_xpath("//*[@id='tgCol0']/div["+ str(div) +"]/dl")
-                                    time.sleep(5)
-                                    appoint_time = click_time.click()
-                                    time.sleep(2)
-                                    self.click(*ScheduleAppointmentsEventlocators.BTN_CLOSE_ARROW)
-                                    break
-                        break
-                    assert True
+            self.click(*CalnderLocators.BTN_DAILY)
+            for div in range(2, 26):
+                time.sleep(3)
+                web_patient_name = self.driver.find_element_by_xpath(
+                    "//*[@id='tgCol0']/div[" + str(div) + "]/dl/dd"
+                ).text
+                name = web_patient_name.split(":")[0]
+                if PATIENT_NAME == name:
+                    for div in range(2, 20):
+                        web_time = self.driver.find_element_by_xpath(
+                            "//*[@id='tgCol0']/div[" + str(div) + "]/dl/dt"
+                        ).text
+                        start_time = web_time.split("-")[0]
+                        end_time = web_time.split("-")[1]
+                        dur = end_time.split(" ")[2]
+                        duration = dur.lower()
+                        ttt = start_time + duration
+                        DURATION_TIME = ttt.replace(" ", "")
+                        if TIME == DURATION_TIME:
+                            time.sleep(4)
+                            click_time = self.driver.find_element_by_xpath(
+                                "//*[@id='tgCol0']/div[" + str(div) + "]/dl"
+                            )
+                            time.sleep(5)
+                            appoint_time = click_time.click()
+                            time.sleep(2)
+                            self.click(*ScheduleAppointmentsEventlocators.BTN_CLOSE_ARROW)
+                            break
+                    break
+                assert True
         except WebDriverException:
             self.fail("Could not verifyAppointmentEvent")
 
@@ -369,15 +387,15 @@ class CalendarAppointment(ScheduleAppointmentEvent):
             self.hover(*ScheduleAppointmentsEventlocators.MNU_SCHEDUL)
             time.sleep(2)
             self.click(*ScheduleAppointmentsEventlocators.MNU_CALENDER)
-            if(type == 'month'):
+            if type == "month":
                 self.click(*CalnderLocators.BTN_MONTH)
-            if(type == 'daily'):
+            if type == "daily":
                 self.click(*CalnderLocators.BTN_DAILY)
-            if(type == 'weekly'):
+            if type == "weekly":
                 self.click(*CalnderLocators.BTN_WEEKLY)
-            if(type == 'examrooms'):
+            if type == "examrooms":
                 self.click(*CalnderLocators.BTN_EXAM_ROOM)
-            if(type == 'Doctor'):
+            if type == "Doctor":
                 self.click(*CalnderLocators.BTN_DOCTOR)
         except WebDriverException:
             self.fail("Could not click month tab")
@@ -388,7 +406,9 @@ class CalendarAppointment(ScheduleAppointmentEvent):
         """
         try:
             time.sleep(6)
-            self.driver.find_element_by_xpath("//*[@class='mv-event-container']//*[@class='st-c']").click()
+            self.driver.find_element_by_xpath(
+                "//*[@class='mv-event-container']//*[@class='st-c']"
+            ).click()
         except WebDriverException:
             self.fail("Could not select appointment")
 
@@ -398,10 +418,10 @@ class CalendarAppointment(ScheduleAppointmentEvent):
         """
         try:
             self.selectappointment()
-            if(status == time):
+            if status == time:
                 PATIENT_TIME = self.getAttribute(*ScheduleAppointmentsEventlocators.BTN_TIME)
                 TIME_DURATION = PATIENT_TIME.lower()
-                if(TIME == TIME_DURATION):
+                if TIME == TIME_DURATION:
                     self.click(*ScheduleAppointmentsEventlocators.BTN_CLOSE_ARROW)
                     assert True("Verified SuccessFully")
         except WebDriverException:
@@ -416,13 +436,13 @@ class CalendarAppointment(ScheduleAppointmentEvent):
             self.click(*CalnderLocators.BTN_EDIT)
             self.driver.switch_to.window(self.driver.window_handles[1])
             time.sleep(2)
-            if(type == 'patient'):
+            if type == "patient":
                 self.click(*CalnderLocators.TXT_FSTNAME)
                 self.type(self.firstname, *CalnderLocators.TXT_FSTNAME)
                 PATIENT_NAME = self.getAttribute(*CalnderLocators.TXT_FSTNAME)
                 self.scroll(*CalnderLocators.TXT_SUFFIX)
                 self.scroll(*CalnderLocators.TXT_REMINDER)
-            if(type == 'date'):
+            if type == "date":
                 self.scroll(*CalnderLocators.TXT_SUFFIX)
                 self.scroll(*CalnderLocators.TXT_REMINDER)
                 self.click(*CalnderLocators.TXT_LST_APP)
@@ -438,10 +458,10 @@ class CalendarAppointment(ScheduleAppointmentEvent):
         This method is edit the details on screen
         """
         try:
-            if(type == 'color'):
+            if type == "color":
                 self.click(*CalnderLocators.BTN_COLOR)
                 self.click(*CalnderLocators.TXT_COLOR)
-            if(type == 'time'):
+            if type == "time":
                 self.click(*ScheduleAppointmentsEventlocators.BTN_TIME)
                 self.type(self.times, *ScheduleAppointmentsEventlocators.BTN_TIME)
                 patient = self.driver.find_element_by_id("id_appt-patient_autocomplete")
@@ -458,7 +478,7 @@ class CalendarAppointment(ScheduleAppointmentEvent):
         """
         try:
             self.click(*ScheduleAppointmentsEventlocators.DDL_EXAM)
-            self.selectByVisibleText("Exam 3",*ScheduleAppointmentsEventlocators.DDL_EXAM)
+            self.selectByVisibleText("Exam 3", *ScheduleAppointmentsEventlocators.DDL_EXAM)
         except WebDriverException:
             self.fail("could not click the Exam Room")
 
@@ -498,13 +518,13 @@ class CalendarAppointment(ScheduleAppointmentEvent):
         """
         try:
             time.sleep(4)
-            if(type == 'fur'):
+            if type == "fur":
                 self.click(*CalnderLocators.BTN_NEXT_MONTH)
                 self.click(*CalnderLocators.DDL_YEAR)
                 self.selectByVisibleText("2022", *CalnderLocators.DDL_YEAR)
                 self.click(*CalnderLocators.BTN_DAY)
                 time.sleep(2)
-            elif(type == 'past'):
+            elif type == "past":
                 self.click(*CalnderLocators.BTN_PRE_MONTH)
                 self.click(*CalnderLocators.DDL_YEAR)
                 self.selectByVisibleText("2017", *CalnderLocators.DDL_YEAR)
@@ -596,7 +616,7 @@ class CalendarAppointment(ScheduleAppointmentEvent):
         """
         try:
             var_Office_Name = self.driver.find_element_by_xpath("//*[@id='content']").text
-            if(OFF_NAME == var_Office_Name):
+            if OFF_NAME == var_Office_Name:
                 self.assertequal("Verified the office name")
         except WebDriverException:
             self.fail("Could not Print the page")
@@ -612,4 +632,3 @@ class CalendarAppointment(ScheduleAppointmentEvent):
 
         except WebDriverException:
             self.fail("could not click new patient button")
-
